@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />    
+    <title>AGENT CCP App</title>
+    <!-- move these later -->
+    <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+     <!--   Replace SDK_VERSION_NUMBER with the current SDK version number -->
+     <script src="https://sdk.amazonaws.com/js/aws-sdk-SDK_v3.js"></script>
+    <script type="text/javascript" src="./connect-streams-min.js"></script>
+    <script type="text/javascript" src="./amazon-connect-chat.js"></script>
+    <style>
+      #acceptContact.ringing {
+        background:lightgreen;
+      }
+      #declineContact.ringing {
+        background: mediumvioletred;
+      }
+      .chat-contact {
+        padding:5px;
+        background:lightgrey;
+      }
+      .chat-contact.active {
+        background: dodgerblue;
+        color:white;
+      }
+      .chat-message {
+        display:flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+    </style>
+  </head>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+<!-- TEST -->
+<h2>Custom Contact Control Panel</h2>
+<div id="ccpContainer" style="width: 100%; height: 300px; display: block; "></div>
+<div id="customCCPDiv" style="text-align: center;  border-style: solid; border-color: gray; border-width: thin;">
+  <p style="text-align:center">Agent Controls</p>
+    <!-- custom user experience goes here -->
+    <table style="display: inline-block;">
+        <tbody>
+          <tr>
+            <td>
+                <button disabled type="button" id="acceptContact" value="SetReady">Accept Contact</button>
+            </td>
+            <td>
+                <button disabled type="button" id="declineContact" value="SetOffline">Decline Contact</button>
+            </td>
+          </tr>
+          <tr>
+            <td>
+                <button type="button" id="setReady" value="SetReady">Set Ready</button>
+            </td>
+            <td>
+                <button type="button" id="setOffline" value="SetOffline">Set Offline</button>
+            </td>
+          </tr>
+          <tr>
+            <td>
+                <button type="button" id="transferButton" value="transfer">Transfer</button>
+            </td>
+            <td>
+              <button type="button" id="endChat" value="transfer">End Chat</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>      
+      <div id="statusDiv">
+          <div id="agentStatusDiv" style="padding: 5px;">
+        </div>
+    </div>    
+</div>
+  <div id="customChatDisplay" style="display: flex; justify-content: space-between; align-items: stretch;">
+    <div id="customChatDisplay__sidebar" ></div>
+    <div id="customChatDisplay__main" style="height: 300px; overflow-x: auto;">
+      <div id="customChatDisplay__window"></div>
+      <div id="customChatDisplay__input"></div>
+    </div>
+  </div>
+  </body>
+  <script type="text/javascript" src="./scripts.js"></script>
+</html>
